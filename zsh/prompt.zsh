@@ -66,9 +66,9 @@ env(){
 # command line. I filter it to only count those tagged as "+next", so it's more
 # of a motivation to clear out the list.
 todo(){
-  if $(which $HOME/todo.sh &> /dev/null)
+  if $(which $HOME/.todo/todo.sh &> /dev/null)
   then
-    num=$(echo $($HOME/todo.sh ls +next | wc -l))
+    num=$(echo $($HOME/.todo/todo.sh ls +next | wc -l))
     let todos=num-2
     if [ $todos != 0 ]
     then

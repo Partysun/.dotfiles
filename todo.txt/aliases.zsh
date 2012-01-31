@@ -1,9 +1,9 @@
 # todo.sh: https://github.com/ginatrapani/todo.txt-cli
 function t() { 
   if [ $# -eq 0 ]; then
-    $HOME/todo.sh ls
+    $HOME/.todo/todo.sh ls
   else
-    $HOME/todo.sh $*
+    $HOME/.todo/todo.sh $*
   fi
 }
 
