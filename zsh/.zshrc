@@ -1,8 +1,8 @@
 # shortcut to this dotfiles path is $ZSH
-export ZSH=$HOME/.dotfiles
+export ZSH=$HOME/dotfiles
 
 # your project folder that we can `c [tab]` to
-export PROJECTS=~/usr/local/dev/eworkspace
+export PROJECTS=/usr/local/dev/eworkspace
 
 # source every .zsh file in this rep
 for config_file ($ZSH/**/*.zsh) source $config_file
