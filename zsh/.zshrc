@@ -20,3 +20,5 @@ compinit
 
 # load every completion after autocomplete loads
 for config_file ($ZSH/**/completion.sh) source $config_file
+export WORKON_HOME=/home/yura/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
