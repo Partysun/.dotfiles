@@ -1,14 +1,23 @@
 set noswapfile
 
-call pathogen#helptags()
-call pathogen#runtime_append_all_bundles()
+" pathogen load
 filetype off
-syntax on
+
+call pathogen#infect()
+call pathogen#helptags()
+
 filetype plugin indent on
+syntax on
 
 set t_Co=256
-colors mustang
+colors wombat256mod
  
+set novisualbell "Не мигать 
+set encoding=utf-8 " Кодировка файлов по умолчанию
+"Вырубаем .swp и ~ (резервные) файлы
+set nobackup
+set noswapfile
+
 " ----------------------------------------------------------------------------
 "  Text Formatting
 " ----------------------------------------------------------------------------
