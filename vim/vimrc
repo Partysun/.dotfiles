@@ -1,17 +1,12 @@
-set noswapfile
-
 " pathogen load
 filetype off
-
-call pathogen#infect()
-call pathogen#helptags()
-
+call pathogen#runtime_append_all_bundles()
 filetype plugin indent on
 syntax on
 
 set t_Co=256
 colors wombat256mod
- 
+
 set novisualbell "Не мигать 
 set encoding=utf-8 " Кодировка файлов по умолчанию
 "Вырубаем .swp и ~ (резервные) файлы
@@ -24,7 +19,6 @@ set noswapfile
 
 set autoindent             " automatic indent new lines
 set smartindent            " be smart about it
-inoremap # X<BS>#
 set nowrap                 " do not wrap lines
 set softtabstop=2          " yep, two
 set shiftwidth=2           " ..
@@ -55,12 +49,6 @@ nnoremap j gj
 nnoremap k gk
 vnoremap j gj
 vnoremap k gk
-nnoremap <Down> gj
-nnoremap <Up> gk
-vnoremap <Down> gj
-vnoremap <Up> gk
-inoremap <Down> <C-o>gj
-inoremap <Up> <C-o>gk
 
 " ----------------------------------------------------------------------------
 "  UI
@@ -71,7 +59,7 @@ set noshowcmd              " don't display incomplete commands
 set nolazyredraw           " turn off lazy redraw
 set number                 " line numbers
 set wildmenu               " turn on wild menu
-set wildmode=list:longest,full
+set wildmode=list:longest
 set ch=2                   " command line height
 set backspace=2            " allow backspacing over everything in insert mode
 set whichwrap+=<,>,h,l,[,] " backspace and cursor keys wrap to
@@ -90,8 +78,6 @@ set incsearch              " do incremental searching
 set laststatus=2           " always show the status line
 set ignorecase             " ignore case when searching
 set nohlsearch             " don't highlight searches
-set visualbell             " shut the fuck up
-
 
 " ---------------------------------------------------------------------------
 "  Strip all trailing whitespace in file
