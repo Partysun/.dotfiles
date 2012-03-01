@@ -1,7 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/Users/reva/.dotfiles/vim/vim/ftdetect'
-let g:netrw_dirhist_2='/Users/reva/.dotfiles/vim/vim'
-let g:netrw_dirhist_3='/Users/reva/.dotfiles/vim/vim/plugin'
-let g:netrw_dirhist_4='/Users/reva/.dotfiles/vim/vim'
-let g:netrw_dirhist_5='/Users/reva/.dotfiles/vim'
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/usr/local/dev/eworkspace/thesongsbook/templates'
+let g:netrw_dirhist_2='/usr/local/dev/eworkspace/thesongsbook/core'
+let g:netrw_dirhist_3='/usr/local/dev/eworkspace/thesongsbook/reports'

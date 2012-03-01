@@ -36,4 +36,19 @@ wget --no-check-certificate -q -O - https://github.com/nvie/gitflow/raw/develop/
 ## git-flow-flow-completion.sh from .dotfiles or wget https://raw.github.com/bobthecow/git-flow-completion/master/git-flow-completion.zsh for zsh
 source ~/.git-flow-completion.sh
 
+#Jenkins - extra info - https://wiki.jenkins-ci.org/display/JENKINS/Installing+Jenkins+on+Ubuntu
+# need OpenJDK6 and OpenJRE6
+sudo apt-get install openjdk-6-jre
+sudo apt-get install openjdk-6-jdk
+
+#install Jenkins UBUNTU
+wget -q -O - http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key | sudo apt-key add -
+sudo sh -c 'echo deb http://pkg.jenkins-ci.org/debian binary/ > /etc/apt/sources.list.d/jenkins.list'
+sudo aptitude update
+sudo aptitude install jenkins
+
+#update Jenkins
+sudo aptitude update
+sudo aptitude install jenkins
+
 
