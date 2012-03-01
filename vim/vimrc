@@ -50,6 +50,10 @@ nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 
+" cool NERDTree open/close
+map ,n :NERDTree<cr>
+map ,c :NERDTreeClose<cr>
+
 " ----------------------------------------------------------------------------
 "  UI
 " ----------------------------------------------------------------------------
