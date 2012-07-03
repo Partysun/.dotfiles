@@ -1,2 +1,11 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =0
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/usr/local/dev/eworkspace/satchless/examples/demo/carts'
+let g:netrw_dirhist_2='/usr/local/dev/eworkspace/limebox'
+let g:netrw_dirhist_3='/usr/local/dev/eworkspace/thesongsbook/fabfile'
+let g:netrw_dirhist_4='/usr/local/dev/eworkspace/dodobox/css'
+let g:netrw_dirhist_5='/usr/local/dev/eworkspace/thesongsbook/source/templates'
+let g:netrw_dirhist_6='/usr/local/dev/eworkspace/thesongsbook/source'
+let g:netrw_dirhist_7='/usr/local/dev/eworkspace/SDKs/samples'
+let g:netrw_dirhist_8='/usr/local/dev/eworkspace/thesongsbook/source/templates'
+let g:netrw_dirhist_9='/Users/reva/.dotfiles/zsh/functions'

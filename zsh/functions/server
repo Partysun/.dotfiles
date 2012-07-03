@@ -1,0 +1,6 @@
+# Start an HTTP server from a directory, optionally specifying the port.
+
+function server() {
+  open "http://localhost:8000/"
+  python -m SimpleHTTPServer 8000
+}
