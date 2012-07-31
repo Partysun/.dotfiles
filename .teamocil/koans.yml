@@ -1,0 +1,21 @@
+session:
+  name: "koans"
+  windows:
+    - name: "python console"
+      root: "~/Developer/education/python_koans/python2"
+      filters:
+        before:
+          - "python"
+      splits:
+        [splits list]
+    - name: "dev env"
+      root: "~/Developer/education/python_koans/python2"
+      filters:
+        after: 
+          - "echo 'Time for Hack...'"
+      splits:
+        - cmd: "clear"
+          focus: true
+          width: 70
+        - cmd: "run.sh"
+          width: 30

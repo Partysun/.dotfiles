@@ -20,3 +20,6 @@ compinit
 
 # load every completion after autocomplete loads
 for config_file ($ZSH/**/completion.sh) source $config_file
+
+# teamocil autocomplete
+compctl -g '~/.teamocil/*(:t:r)' teamocil

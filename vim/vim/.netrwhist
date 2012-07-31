@@ -1,6 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/usr/local/dev/eworkspace/games.partysun.pro/games'
-let g:netrw_dirhist_2='/usr/local/dev/eworkspace/games.partysun.pro/games/templates'
-let g:netrw_dirhist_3='/usr/local/dev/eworkspace/games.partysun.pro/games/core'
-let g:netrw_dirhist_4='/usr/local/dev/eworkspace/games.partysun.pro/games/templates'
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/usr/local/dev/eworkspace/thesongsbook/source/activity/templatetags'
+let g:netrw_dirhist_2='/Users/reva/Developer/totallicks/songbook'
+let g:netrw_dirhist_3='/Users/reva/Developer/totallicks/player'
+let g:netrw_dirhist_4='/Users/reva/Developer/totallicks/totallicks/settings'
+let g:netrw_dirhist_5='/Users/reva/Developer/totallicks/c'
