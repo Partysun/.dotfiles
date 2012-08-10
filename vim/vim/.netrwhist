@@ -1,11 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =9
-let g:netrw_dirhist_1='/usr/local/dev/eworkspace/thesongsbook/source/activity/templatetags'
-let g:netrw_dirhist_2='/Users/reva/Developer/totallicks/songbook'
-let g:netrw_dirhist_3='/Users/reva/Developer/totallicks/player'
-let g:netrw_dirhist_4='/Users/reva/Developer/totallicks/totallicks/settings'
-let g:netrw_dirhist_5='/Users/reva/Developer/totallicks/c'
-let g:netrw_dirhist_6='/Users/reva/.dotfiles/system'
-let g:netrw_dirhist_7='/Users/reva/.dotfiles/vim/vim'
-let g:netrw_dirhist_8='/users/reva/Developer/totallicks/totallicks/settings'
-let g:netrw_dirhist_9='/users/reva/.dotfiles/vim/vim/bundle/snipmate.vim'
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/users/reva/.dotfiles/zsh'
+let g:netrw_dirhist_2='/users/reva/.dotfiles'
+let g:netrw_dirhist_3='/Users/reva/Developer/totallicks/templates/registration'
+let g:netrw_dirhist_4='/Users/reva/Developer/totallicks/templates'
