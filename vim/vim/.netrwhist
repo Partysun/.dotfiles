@@ -1,11 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =9
-let g:netrw_dirhist_1='/users/reva/.dotfiles/zsh'
-let g:netrw_dirhist_2='/users/reva/.dotfiles'
-let g:netrw_dirhist_3='/Users/reva/Developer/totallicks/templates/registration'
-let g:netrw_dirhist_4='/Users/reva/Developer/totallicks/templates'
-let g:netrw_dirhist_5='/Users/reva/Developer/totallicks/core/templatetags'
-let g:netrw_dirhist_6='/Users/reva/Developer/totallicks/songbook/templatetags'
-let g:netrw_dirhist_7='/Users/reva/Downloads'
-let g:netrw_dirhist_8='/Users/reva/Documents/Library/frameworks'
-let g:netrw_dirhist_9='/Users/reva/Documents/Library'
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/Users/reva/.dotfiles/vim/vim/bundle/snipmate.vim'
+let g:netrw_dirhist_2='/Users/reva/Developer/totallicks/quiz'
+let g:netrw_dirhist_3='/Users/reva/Developer/NyanCat/Source'
