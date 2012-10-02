@@ -53,7 +53,6 @@ vnoremap k gk
 
 " cool NERDTree open/close
 map ,n :NERDTree<cr>
-map ,c :NERDTreeClose<cr>
 
 " ----------------------------------------------------------------------------
 "  UI
