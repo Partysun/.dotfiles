@@ -1,0 +1,17 @@
+session:
+  name: "MigrationHaxe"
+  windows:
+    - name: "test server activated"
+      root: "~/Developer/MigrationHaxe/Export/flash/bin/"
+      filters:
+        before:
+          - "python -m SimpleHTTPServer 8000"
+      splits:
+        [splits list]
+    - name: "develop "
+      root: "~/Developer/MigrationHaxe"
+      filters:
+        before: 
+          - "echo 'Time for Hack...'"
+      splits:
+        [splits list]

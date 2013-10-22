@@ -1,19 +1,17 @@
-" pathogen load
-filetype off
-call pathogen#runtime_append_all_bundles()
-filetype plugin indent on
-syntax on
+execute pathogen#infect()
 
 set t_Co=256
 colors wombat256mod
 
 set novisualbell "Не мигать 
-set encoding=utf-8 " Кодировка файлов по умолчанию
-"Вырубаем .swp и ~ (резервные) файлы
+set noerrorbells
+set encoding=utf-8 "Кодировка файлов по умолчанию
 set nobackup
 set noswapfile
-" hack for copy code
-set pastetoggle=<F2>
+set ffs=unix,dos
+set pastetoggle=<F2> "hack for copy code
+nmap <F8> :TagbarToggle<CR>
+
 " ----------------------------------------------------------------------------
 "  Text Formatting
 " ----------------------------------------------------------------------------
@@ -54,6 +52,16 @@ vnoremap k gk
 " cool NERDTree open/close
 map ,n :NERDTree<cr>
 
+" launch unit tests
+map ,u :!sh ci.sh<cr>
+
+" Use 'extra magic' for regex searches
+nnoremap <space> ?
+vnoremap <space> ?
+
+" Switch between the last two files
+nnoremap <space><space> <c-^>
+
 " ----------------------------------------------------------------------------
 "  UI
 " ----------------------------------------------------------------------------
@@ -70,7 +78,10 @@ set whichwrap+=<,>,h,l,[,] " backspace and cursor keys wrap to
 set shortmess=filtIoOA     " shorten messages
 set report=0               " tell us about changes
 set nostartofline          " don't jump to the start of line when scrolling
-
+set completeopt=menu,menuone,longest
+set pumheight=15
+let g:SuperTabDefaultCompletionType = "context"
+set lazyredraw
 
 " ----------------------------------------------------------------------------
 " Visual Cues
@@ -91,3 +102,94 @@ function! StripWhitespace ()
     exec ':%s/ \+$//gc'
 endfunction
 map ,s :call StripWhitespace ()<CR>
+
+
+" set the bundle root, and vundle directory
+let root = '~/.vim/bundle'
+let src = 'http://github.com/gmarik/vundle.git'
+
+" clone vundle if it's missing
+if !isdirectory(expand(root, 1).'/vundle')
+  exec '!git clone '.src.' '.shellescape(expand(root.'/vundle', 1))
+endif
+
+" immediately make vundle accessible in the rtp
+exec 'set rtp+='.root.'/vundle'
+
+" initialise vundle's boot script
+call vundle#rc(root)
+
+set autowrite " vaxe likes autowrite
+set nocompatible " we need fancy new vim 7.0 features
+syntax enable on " turn on syntax highlighting
+
+" This disables the preview window for function completions.
+" This window can get distracting, so I often just turn it off.
+" set completeopt=menuone
+
+filetype off " turn off filetype settings, which is required for vundle
+
+Bundle 'gmarik/vundle'
+" load vaxe, and neocomplcache with the given config"
+Bundle 'jdonaldson/vaxe'
+"Bundle 'Shougo/neocomplcache'
+Bundle 'Raimondi/delimitMate'
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle 'tpope/vim-fugitive'
+Bundle 'majutsushi/tagbar'
+Bundle 'mattn/emmet-vim'
+Bundle 'vim-scripts/ZoomWin'
+Bundle 'tpope/vim-surround'
+Bundle "tomtom/tlib_vim"
+Bundle 'ervandew/supertab'
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle "garbas/vim-snipmate"
+Bundle 'lunaru/vim-less'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/syntastic'
+Bundle 'scrooloose/nerdtree'
+Bundle 'croaky/vim-colors-github'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'davidhalter/jedi-vim'
+"undle 'Lokaltog/powerline', {'rtp':'powerline/bindings/vim'}
+"/Bundle 'zhaocai/linepower.vim'
+"let g:neocomplcache_enable_at_startup = 1 " always load neocc
+"let g:neocomplcache_enable_auto_select = 1 " auto-popup!
+"if !exists('g:neocomplcache_omni_patterns')
+    "let g:neocomplcache_omni_patterns = {} " set a default pattern dict
+"endif
+" Disable auto popup, use <Tab> to autocomplete
+let g:clang_complete_auto = 0
+" Show clang errors in the quickfix window
+let g:clang_complete_copen = 1
+"let g:cland_auto_select = 0
+
+"" this tells neocc when to try for completions... after '.', '(', etc.
+"let g:neocomplcache_omni_patterns.haxe = '\v([\]''"\)]|\w|(^\s*))(\.|\()'
+
+filetype plugin indent on " re-enable plugin settings
+
+"filetype plugin on
+"set omnifunc=syntaxcomplete#Complete
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+nnoremap <Leader>e :make flash<CR>
+
+" force write a file
+cmap w!! w !sudo tee % >/dev/null
+
+let g:jedi#goto_assignments_command = "<leader>g"
+let g:jedi#goto_definitions_command = "<leader>d"
+let g:jedi#documentation_command = "K"
+let g:jedi#usages_command = "<leader>n"
+let g:jedi#rename_command = "<leader>r"
+let g:jedi#show_call_signatures = "1"
+" Hack for SuperTab supprot with YouCompleteMe
+let g:ycm_key_list_select_completion = ['<Down>']
+let g:vaxe_nme_target = "flash"

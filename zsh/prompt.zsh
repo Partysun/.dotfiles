@@ -53,7 +53,7 @@ env(){
   if $(which virtualenv &> /dev/null) 
   then
     if [ $VIRTUAL_ENV ]; then
-      echo "<%{$fg_bold[yellow]%}venv:${VIRTUAL_ENV##*/}%{$reset_color%}>" # last folder's name in a directory path
+      echo "<%{$fg_bold[yellow]%}${VIRTUAL_ENV##*/}%{$reset_color%}>" # last folder's name in a directory path
     else
       echo ""
     fi
@@ -120,7 +120,7 @@ directory_name(){
 
 export PROMPT=$'\n$(env) in $(directory_name) $(git_dirty)$(need_push)\n› '
 set_prompt () {
-    export RPROMPT="%{$fg_bold[cyan]%}$(git_time_since_commit)$(todo)%{$reset_color%}"
+    export RPROMPT="%{$fg_bold[cyan]%}%{$reset_color%}"
 }
 
 precmd() {
