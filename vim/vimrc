@@ -9,8 +9,6 @@ set encoding=utf-8 "Кодировка файлов по умолчанию
 set nobackup
 set noswapfile
 set ffs=unix,dos
-set pastetoggle=<F2> "hack for copy code
-nmap <F8> :TagbarToggle<CR>
 
 " ----------------------------------------------------------------------------
 "  Text Formatting
@@ -34,6 +32,9 @@ set virtualedit=block      " allow virtual edit in visual block ..
 
 " lead with ,
 let mapleader = ","
+
+set pastetoggle=<Leader>p "hack for copy code
+nmap <Leader>o :TagbarToggle<CR>
 
 " exit to normal mode with 'jj'
 inoremap jj <ESC>
@@ -152,6 +153,8 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'croaky/vim-colors-github'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'davidhalter/jedi-vim'
+Bundle 'mileszs/ack.vim'
+"Bundle 'mhinz/vim-startify'
 "undle 'Lokaltog/powerline', {'rtp':'powerline/bindings/vim'}
 "/Bundle 'zhaocai/linepower.vim'
 "let g:neocomplcache_enable_at_startup = 1 " always load neocc
@@ -192,4 +195,10 @@ let g:jedi#rename_command = "<leader>r"
 let g:jedi#show_call_signatures = "1"
 " Hack for SuperTab supprot with YouCompleteMe
 let g:ycm_key_list_select_completion = ['<Down>']
-let g:vaxe_nme_target = "flash"
+let g:ycm_autoclose_preview_window_after_completion=1
+nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+let g:vaxe_nme_target = "mac"
+
+" ,b
+" In Visual mode exec git blame with selected text
+vmap <Leader>b :<C-U>!git blame <C-R>=expand("%:p") <CR> \|sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>"

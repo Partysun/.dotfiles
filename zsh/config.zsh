@@ -4,8 +4,12 @@ else
   export PS1='%3~$(git_info_for_prompt)%# '
 fi
 
-export LSCOLORS="exfxcxdxbxegedabagacad"
+#export LSCOLORS="exfxcxdxbxegedabagacad"
+export LSCOLORS="Exfxcxdxbxegedabagacad"
+#export LSCOLORS="gxfxbEaEBxxEhEhBaDaCaD"
 export CLICOLOR=true
+export TERM=xterm-256color  # for common 256 color terminals
+export TERM=screen-256color # for a tmux -2 session
 
 fpath=($ZSH/zsh/functions $fpath)
 

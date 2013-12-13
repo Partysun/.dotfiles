@@ -1,0 +1,20 @@
+session:
+  name: "totallicks-mobile"
+  windows:
+    - name: "develop mobile"
+      root: "~/Developer/totallicks-alphatab/Mobile"
+      #filters:
+        #before:
+      splits:
+        - cmd: "clear"
+          focus: true
+          width: 80
+        - cmd: "clear"
+          width: 20
+    - name: "test"
+      root: "~/Developer/totallicks-alphatab/Mobile"
+      filters:
+        after: 
+          - "echo 'Time for Hack...'"
+      splits:
+        [splits list]
