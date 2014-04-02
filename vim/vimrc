@@ -51,10 +51,10 @@ vnoremap j gj
 vnoremap k gk
 
 " cool NERDTree open/close
-map ,n :NERDTree<cr>
+map ,m :NERDTree<cr>
 
 " launch unit tests
-map ,u :!sh ci.sh<cr>
+map <Leader>u :!nosetests<cr>
 
 " Use 'extra magic' for regex searches
 nnoremap <space> ?
@@ -104,6 +104,8 @@ function! StripWhitespace ()
 endfunction
 map ,s :call StripWhitespace ()<CR>
 
+" Emmete Ctrl E"
+let g:user_emmet_leader_key='<C-E>'
 
 " set the bundle root, and vundle directory
 let root = '~/.vim/bundle'
@@ -131,17 +133,14 @@ syntax enable on " turn on syntax highlighting
 filetype off " turn off filetype settings, which is required for vundle
 
 Bundle 'gmarik/vundle'
-" load vaxe, and neocomplcache with the given config"
 Bundle 'jdonaldson/vaxe'
-"Bundle 'Shougo/neocomplcache'
+Bundle 'plasticboy/vim-markdown'
 Bundle 'Raimondi/delimitMate'
-Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle 'tpope/vim-fugitive'
 Bundle 'majutsushi/tagbar'
 Bundle 'mattn/emmet-vim'
 Bundle 'vim-scripts/ZoomWin'
 Bundle 'tpope/vim-surround'
-Bundle "tomtom/tlib_vim"
 Bundle 'ervandew/supertab'
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
@@ -149,11 +148,18 @@ Bundle "garbas/vim-snipmate"
 Bundle 'lunaru/vim-less'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/syntastic'
+Bundle 'wincent/command-t'
 Bundle 'scrooloose/nerdtree'
 Bundle 'croaky/vim-colors-github'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'davidhalter/jedi-vim'
 Bundle 'mileszs/ack.vim'
+Bundle 'jgdavey/tslime.vim'
+Bundle 'rstacruz/sparkup'
+Bundle 'JulesWang/css.vim'
+Bundle 'cakebaker/scss-syntax.vim'
+Bundle 'nono/vim-handlebars'
+
 "Bundle 'mhinz/vim-startify'
 "undle 'Lokaltog/powerline', {'rtp':'powerline/bindings/vim'}
 "/Bundle 'zhaocai/linepower.vim'
@@ -196,9 +202,14 @@ let g:jedi#show_call_signatures = "1"
 " Hack for SuperTab supprot with YouCompleteMe
 let g:ycm_key_list_select_completion = ['<Down>']
 let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_path_to_python_interpreter = '/usr/local/bin/python'
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let g:vaxe_nme_target = "mac"
 
 " ,b
 " In Visual mode exec git blame with selected text
 vmap <Leader>b :<C-U>!git blame <C-R>=expand("%:p") <CR> \|sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>"
+
+vmap <C-c><C-c> <Plug>SendSelectionToTmux
+nmap <C-c><C-c> <Plug>NormalModeSendToTmux
+nmap <C-c>r <Plug>SetTmuxVars

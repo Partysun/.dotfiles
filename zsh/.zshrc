@@ -53,3 +53,5 @@ if [[ -r /usr/local/share/python/virtualenvwrapper.sh ]]; then
 else
     echo "WARNING: Can't find virtualenvwrapper.sh"
 fi
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
