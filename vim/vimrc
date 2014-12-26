@@ -1,9 +1,8 @@
 execute pathogen#infect()
 
 set t_Co=256
-let base16colorspace=256  " Access colors present in 256 colorspace"
-colors wombat256mod
-"colors Tomorrow-Night-Eighties
+colors wombat256mod 
+let macvim_skip_colorscheme=1
 
 set novisualbell "Не мигать 
 set noerrorbells
@@ -11,10 +10,12 @@ set encoding=utf-8 "Кодировка файлов по умолчанию
 set nobackup
 set noswapfile
 set ffs=unix,dos
-set lazyredraw
 
 "Hack for copy paste and paste again problem"
 xnoremap p pgvy
+"Degradate vim for speed improve
+set fillchars=diff:⣿,vert:│
+"set fillchars=diff:⣿,vert:\|
 
 " ----------------------------------------------------------------------------
 "  Text Formatting
@@ -37,8 +38,21 @@ set foldenable
 set foldlevelstart=10
 set foldnestmax=10 
 set foldmethod=indent
-set cursorline          " highlight current line"
+"set cursorline          " highlight current line"
 set wildignore=*.swp,*.bak,*.pyc,*.class
+
+set laststatus=2
+set statusline=
+set statusline+=%f         " Path to the file
+set statusline+=\ 
+set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
+set statusline+=%=        " Switch to the right side
+set statusline+=%=%-10.(%c%V%)  " Right aligned file nav info"
+set statusline+=\ 
+set statusline+=%l        " Current line
+set statusline+=/         " Separator
+set statusline+=%L        " Total lines
+
 " ----------------------------------------------------------------------------
 "  Remapping
 " ----------------------------------------------------------------------------
@@ -77,12 +91,46 @@ vnoremap <space> ?
 
 " Switch between the last two files
 nnoremap <space><space> <c-^>
+nnoremap <leader><space> :GitGutterToggle<cr>
+
+" коментирование - ракоментирования текста
+map <C-K> <leader>c<space>
+
+"nnoremap <up> <nop>
+"nnoremap <down> <nop>
+"nnoremap <left> <nop>
+"nnoremap <right> <nop>
+"inoremap <up> <nop>
+"inoremap <down> <nop>
+"inoremap <left> <nop>
+"inoremap <right> <nop>
+
+" arrow keys -> window resize
+nnoremap <left> :vertical resize -5<cr>
+nnoremap <down> :resize +5<cr>
+nnoremap <up> :resize -5<cr>
+nnoremap <right> :vertical resize +5<cr>
+
+au FocusLost * :wa
+
+" Keep search matches in the middle of the window.
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" Same when jumping around
+nnoremap g; g;zz
+nnoremap g, g,zz
+nnoremap ]] ]]zt
+nnoremap [[ [[zt
+nnoremap <c-o> <c-o>zz
+nnoremap <c-i> <c-i>zz
+nnoremap <c-t> <c-t>zt
 
 " ----------------------------------------------------------------------------
 "  UI
 " ----------------------------------------------------------------------------
 
-set ruler                  " show the cursor position all the time
+"set ruler                  " show the cursor position all the time
 set noshowcmd              " don't display incomplete commands
 set nolazyredraw           " turn off lazy redraw
 set number                 " line numbers
@@ -96,8 +144,14 @@ set report=0               " tell us about changes
 set nostartofline          " don't jump to the start of line when scrolling
 set completeopt=menu,menuone,longest
 set pumheight=15
-let g:SuperTabDefaultCompletionType = "context"
-set lazyredraw
+"set lazyredraw
+"set ttyfast
+let loaded_matchparen=1 " Don't load matchit.vim (paren/bracket matching)
+set noshowmatch         " Don't match parentheses/brackets
+"set nocursorline        " Don't paint cursor line
+set nocursorcolumn      " Don't paint cursor column
+"set scrolljump=8        " Scroll 8 lines at a time at bottom/top
+let html_no_rendering=1 " Don't render italic, bold, links in HTML"
 
 " ----------------------------------------------------------------------------
 " Visual Cues
@@ -121,7 +175,6 @@ map ,s :call StripWhitespace ()<CR>
 
 " Emmete Ctrl E"
 let g:user_emmet_leader_key='<C-E>'
-
 " set the bundle root, and vundle directory
 let root = '~/.vim/bundle'
 let src = 'http://github.com/gmarik/vundle.git'
@@ -148,6 +201,7 @@ syntax enable on " turn on syntax highlighting
 filetype off " turn off filetype settings, which is required for vundle
 
 Bundle 'gmarik/vundle'
+Bundle 'gcmt/tube.vim'
 Bundle 'jdonaldson/vaxe'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'Raimondi/delimitMate'
@@ -157,7 +211,6 @@ Bundle 'majutsushi/tagbar'
 Bundle 'mattn/emmet-vim'
 Bundle 'vim-scripts/ZoomWin'
 Bundle 'tpope/vim-surround'
-"Bundle 'ervandew/supertab'
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
 "Bundle "garbas/vim-snipmate"
@@ -166,11 +219,9 @@ Bundle "honza/vim-snippets"
 Bundle 'lunaru/vim-less'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/syntastic'
-Bundle 'wincent/command-t'
 Bundle 'scrooloose/nerdtree'
 Bundle 'croaky/vim-colors-github'
 Bundle 'Valloric/YouCompleteMe'
-"Bundle 'davidhalter/jedi-vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'jgdavey/tslime.vim'
 Bundle 'rstacruz/sparkup'
@@ -180,24 +231,18 @@ Bundle 'nono/vim-handlebars'
 Bundle 'kien/ctrlp.vim'
 Bundle 'ivalkeen/vim-ctrlp-tjump'
 Bundle 'Rykka/colorv.vim'
+Bundle 'benmills/vimux'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'editorconfig/editorconfig-vim'
+Bundle 'rizzatti/dash.vim'
+"Bundle 'yonchu/accelerated-smooth-scroll'
+"Bundle 'bling/vim-airline'
 "Bundle 'chriskempson/base16-vim'
 
-"Bundle 'mhinz/vim-startify'
-"undle 'Lokaltog/powerline', {'rtp':'powerline/bindings/vim'}
-"/Bundle 'zhaocai/linepower.vim'
-"let g:neocomplcache_enable_at_startup = 1 " always load neocc
-"let g:neocomplcache_enable_auto_select = 1 " auto-popup!
-"if !exists('g:neocomplcache_omni_patterns')
-    "let g:neocomplcache_omni_patterns = {} " set a default pattern dict
-"endif
-" Disable auto popup, use <Tab> to autocomplete
 let g:clang_complete_auto = 0
 " Show clang errors in the quickfix window
 let g:clang_complete_copen = 1
 "let g:cland_auto_select = 0
-
-"" this tells neocc when to try for completions... after '.', '(', etc.
-"let g:neocomplcache_omni_patterns.haxe = '\v([\]''"\)]|\w|(^\s*))(\.|\()'
 
 filetype plugin indent on " re-enable plugin settings
 
@@ -210,7 +255,6 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-nnoremap <Leader>e :make flash<CR>
 
 " force write a file
 cmap w!! w !sudo tee % >/dev/null
@@ -243,6 +287,7 @@ set grepprg=ag\ --nogroup\ --nocolor
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 " ag is fast enough that CtrlP doesn't need to cache
 let g:ctrlp_use_caching = 0
+nnoremap <leader>. :CtrlPTag<cr>
 "set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc     " MacOSX/Linux
 "set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 "let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|\.log$\|\.pyc$\'
@@ -250,7 +295,23 @@ let g:ctrlp_use_caching = 0
 let g:ctrlp_custom_ignore = {'file': '\v(\.cpp|\.h|\.pyc|\.hh|\.cxx)@<!$'}
 "-----------------------------------------
 
-let g:vaxe_nme_target = "mac"
+" Haxe helpers
+let g:vaxe_openfl_target = "flash"
+let g:vaxe_lime_target = "flash"
+let g:vaxe_haxe_version = 3
+let g:vaxe_completion_write_compiler_output = 1
+map <Leader>oh :call vaxe#OpenHxml()<CR>
+map <Leader>ct :call vaxe#Ctags()<CR>
+map <Leader>ic :call vaxe#ImportClass()<CR>
+map <Leader>pj :call vaxe#ProjectHxml()<CR>
+map <Leader>gd :call vaxe#JumpToDefinition()<CR>
+
+" Tube settings
+let g:tube_terminal = "iterm"
+nnoremap <Leader>e :TubeFocus
+
+" Disable GitGutter
+let g:gitgutter_enabled = 0
 
 " CTRLP extensions
 nnoremap <c-]> :CtrlPtjump<cr>
@@ -279,3 +340,10 @@ let NERDTreeHijackNetrw=1
 let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$',
     \ '\.o$', '\.so$', '\.egg$', '^\.git$', '\.svn$',
     \ '__pycache__', '\.egg-info$', '\.hg$', '\.cibox$']"
+
+"nnoremap <leader>e :call VimuxRunCommand("make test")<CR>
+
+set tags+=/usr/lib/haxe/lib/flixel/git/.git/tags
+set tags+=/usr/lib/haxe/lib/flixel-addons/git/.git/tags
+set tags+=/usr/lib/haxe/lib/flixel-ui/git/.git/tags
+set tags+=/usr/lib/haxe/lib/spinehaxe/git/.git/tags

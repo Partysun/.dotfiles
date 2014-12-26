@@ -1,5 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/usr/lib/haxe/lib/flixel-templates/git'
-let g:netrw_dirhist_2='/Users/reva/Developer/interactive-book/HelloWorld/source'
-let g:netrw_dirhist_3='/usr/lib/haxe/lib'
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/Users/reva/Developer/haxe/Gleed2d/gleed2dhaxe'
+let g:netrw_dirhist_2='/Users/reva/Developer/haxe/Gleed2d/gleed2dhaxe/tests'
+let g:netrw_dirhist_3='/Users/reva/Developer/haxe/Gleed2d/gleed2dhaxe/tests/unit'
+let g:netrw_dirhist_4='/Users/reva/Developer/haxe/Gleed2d/gleed2dhaxe'
+let g:netrw_dirhist_5='/Users/reva/Developer/haxe/Gleed2d/gleed2dhaxe/tests'
+let g:netrw_dirhist_6='/Users/reva/Developer/haxe/Gleed2d/gleed2dhaxe/tests/unit'
+let g:netrw_dirhist_7='/Users/reva/Developer/haxe/Gleed2d/gleed2dhaxe/tests/unit/src'
