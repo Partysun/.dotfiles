@@ -6,4 +6,4 @@ alias df="df -h" # Disk free, in gigabytes, not bytes
 alias du="du -h -c"   # Calculate total disk usage for a folder
 alias ..="cd .."                              # Go up one directory
 alias ...="cd ../.."                          # Go up two directories
-alias teamcity="ssh -i ~/.ssh/mirana_rsa partysun@mirana.cloudapp.net" # Connect Mirana server
+alias ci="ssh yura@serafim.cloudapp.net" # Connect Serafim server
