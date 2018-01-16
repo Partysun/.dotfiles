@@ -29,7 +29,7 @@ set tabstop=4
 set expandtab              " expand tabs to spaces
 set nosmarttab             " fuck tabs
 set formatoptions+=n       " support for numbered/bullet lists
-"set textwidth=80           " wrap at 80 chars by default
+set textwidth=80           " wrap at 80 chars by default
 set virtualedit=block      " allow virtual edit in visual block ..
 
 " Folder
@@ -95,15 +95,6 @@ nnoremap <leader><space> :GitGutterToggle<cr>
 " коментирование - ракоментирования текста
 map <C-K> <leader>c<space>
 
-"nnoremap <up> <nop>
-"nnoremap <down> <nop>
-"nnoremap <left> <nop>
-"nnoremap <right> <nop>
-"inoremap <up> <nop>
-"inoremap <down> <nop>
-"inoremap <left> <nop>
-"inoremap <right> <nop>
-
 " arrow keys -> window resize
 nnoremap <left> :vertical resize -5<cr>
 nnoremap <down> :resize +5<cr>
@@ -129,7 +120,7 @@ nnoremap <c-t> <c-t>zt
 "  UI
 " ----------------------------------------------------------------------------
 
-"set ruler                  " show the cursor position all the time
+set ruler                  " show the cursor position all the time
 set noshowcmd              " don't display incomplete commands
 set nolazyredraw           " turn off lazy redraw
 set number                 " line numbers
@@ -193,65 +184,52 @@ set autowrite " vaxe likes autowrite
 set nocompatible " we need fancy new vim 7.0 features
 syntax enable on " turn on syntax highlighting
 
-" This disables the preview window for function completions.
-" This window can get distracting, so I often just turn it off.
-" set completeopt=menuone
-
 filetype off " turn off filetype settings, which is required for vundle
 
 Bundle 'gmarik/vundle'
-Bundle 'gcmt/tube.vim'
 Bundle 'jdonaldson/vaxe'
 Bundle 'tpope/vim-repeat'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'Raimondi/delimitMate'
-Bundle 'tpope/vim-fugitive'
-Bundle 'gregsexton/gitv'
 Bundle 'majutsushi/tagbar'
 Bundle 'mattn/emmet-vim'
 Bundle 'vim-scripts/ZoomWin'
 Bundle 'tpope/vim-surround'
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
-"Bundle "garbas/vim-snipmate"
 Bundle "SirVer/ultisnips"
 Bundle "honza/vim-snippets"
+Bundle 'justinj/vim-react-snippets'
 Bundle 'lunaru/vim-less'
 Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/syntastic'
 Bundle 'scrooloose/nerdtree'
 Bundle 'croaky/vim-colors-github'
 Bundle 'Valloric/YouCompleteMe'
-Bundle 'mileszs/ack.vim'
 Bundle 'jgdavey/tslime.vim'
 Bundle 'rstacruz/sparkup'
 Bundle 'JulesWang/css.vim'
 Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'nono/vim-handlebars'
 Bundle 'kien/ctrlp.vim'
+Bundle 'mileszs/ack.vim'
 Bundle 'ivalkeen/vim-ctrlp-tjump'
 Bundle 'Rykka/colorv.vim'
 Bundle 'benmills/vimux'
-Bundle 'airblade/vim-gitgutter'
 Bundle 'editorconfig/editorconfig-vim'
 Bundle 'nanotech/jellybeans.vim'
-"Bundle 'rizzatti/dash.vim'
 Bundle 'OmniSharp/omnisharp-vim'
 Bundle 'tpope/vim-dispatch.git'
 Bundle 'OrangeT/vim-csharp.git'
-Plugin 'TaskList.vim'
+Bundle 'pangloss/vim-javascript'
 Bundle 'mxw/vim-jsx.git'
 Bundle 'mtscout6/vim-cjsx'
-Bundle 'justinj/vim-react-snippets'
-"Bundle ''
-"Bundle 'yonchu/accelerated-smooth-scroll'
-"Bundle 'bling/vim-airline'
-"Bundle 'chriskempson/base16-vim'
+Bundle 'scrooloose/syntastic'
+Bundle 'w0rp/ale'
+Bundle 'vim-airline/vim-airline'
+Bundle 'elixir-editors/vim-elixir'
 
 let g:clang_complete_auto = 0
-" Show clang errors in the quickfix window
 let g:clang_complete_copen = 1
-"let g:cland_auto_select = 0
 
 filetype plugin indent on " re-enable plugin settings
 
@@ -264,6 +242,37 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
+"\ 'active_filetypes': ['python', 'javascript'],
+let g:syntastic_mode_map = { 'mode': 'passive',
+  \ 'active_filetypes': [],
+  \ 'passive_filetypes': [] }
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:ale_linters = {'javascript': ['standard']}
+let g:ale_emit_conflict_warnings = 0
+nnoremap <leader>w :SyntasticCheck<CR> :SyntasticToggleMode<CR>
+
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_loc_list_height = 5
+"let g:syntastic_auto_loc_list = 0
+"let g:syntastic_check_on_open = 0
+"let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_open = 0
+let g:syntastic_javascript_checkers = ['eslint']
+
+let g:syntastic_error_symbol = '!!'
+let g:syntastic_style_error_symbol = '⁉️'
+let g:syntastic_warning_symbol = '⚠️'
+let g:syntastic_style_warning_symbol = '💩'
+
+highlight link SyntasticErrorSign SignColumn
+highlight link SyntasticWarningSign SignColumn
+highlight link SyntasticStyleErrorSign SignColumn
+highlight link SyntasticStyleWarningSign SignColumn
 
 " force write a file
 cmap w!! w !sudo tee % >/dev/null
@@ -275,17 +284,10 @@ let g:snips_github = "Partysun"
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsSnippetDirectories=["~/.vim/UltiSnips", "UltiSnips"]
 
-"let g:jedi#goto_assignments_command = "<leader>g"
-"let g:jedi#goto_definitions_command = "<leader>d"
-"let g:jedi#documentation_command = "K"
-"let g:jedi#usages_command = "<leader>n"
-"let g:jedi#rename_command = "<leader>r"
-"let g:jedi#show_call_signatures = "1"
-" Hack for SuperTab supprot with YouCompleteMe
-"let g:ycm_key_list_select_completion = ['<Down>']
-"let g:ycm_autoclose_preview_window_after_completion=1
-"let g:ycm_path_to_python_interpreter = '/usr/local/bin/python'
+let g:jsx_ext_required = 0
+
 let g:ackprg = 'ag --nogroup --nocolor --column'
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " Use ag over grep
@@ -293,16 +295,21 @@ set grepprg=ag\ --nogroup\ --nocolor
 
 "----------------------------------------
 " Use ag in CtrlP for listing files. Lightning fast and respects
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+"let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+      \ --ignore .git
+      \ --ignore .svn
+      \ --ignore .hg
+      \ --ignore .DS_Store
+      \ --ignore node_modules
+      \ --ignore "**/*.pyc"
+      \ -g ""'
 " ag is fast enough that CtrlP doesn't need to cache
 let g:ctrlp_use_caching = 0
 nnoremap <leader>. :CtrlPTag<cr>
-"set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc     " MacOSX/Linux
-"set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
-"let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|\.log$\|\.pyc$\'
-"let g:ctrlp_custom_ignore = '\v[\/]\.(DS_Storegit|hg|svn|optimized|compiled|node_modules|pyc)$'
-let g:ctrlp_custom_ignore = {'file': '\v(\.cpp|\.h|\.pyc|\.hh|\.cxx)@<!$'}
-"-----------------------------------------
+let g:ctrlp_working_path_mode = 'ra'
+let g:ag_working_path_mode="r"
+let g:ctrlp_custom_ignore = '\v[\/]\.(DS_Storegit|hg|svn|optimized|compiled|node_modules|pyc)$'
 
 " Haxe helpers
 let g:vaxe_openfl_target = "flash"
@@ -314,13 +321,6 @@ map <Leader>ct :call vaxe#Ctags()<CR>
 map <Leader>ic :call vaxe#ImportClass()<CR>
 map <Leader>pj :call vaxe#ProjectHxml()<CR>
 map <Leader>gd :call vaxe#JumpToDefinition()<CR>
-
-" Tube settings
-let g:tube_terminal = "iterm"
-nnoremap <Leader>e :TubeFocus
-
-" Disable GitGutter
-let g:gitgutter_enabled = 0
 
 " CTRLP extensions
 nnoremap <c-]> :CtrlPtjump<cr>
@@ -350,12 +350,6 @@ let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$',
     \ '\.o$', '\.so$', '\.egg$', '^\.git$', '\.svn$',
     \ '__pycache__', '\.egg-info$', '\.hg$', '\.cibox$']"
 
-nnoremap <leader>e :call Send_to_Tmux("npm start\n")<CR>
-
-set tags+=/usr/lib/haxe/lib/flixel/git/.git/tags
-set tags+=/usr/lib/haxe/lib/flixel-addons/git/.git/tags
-set tags+=/usr/lib/haxe/lib/flixel-ui/git/.git/tags
-set tags+=/usr/lib/haxe/lib/spinehaxe/git/.git/tags
 
 "This is the default value, setting it isn't actually necessary
 let g:OmniSharp_host = "http://localhost:2001"
@@ -446,3 +440,8 @@ nnoremap <leader>th :OmniSharpHighlightTypes<cr>
 set hidden
 
 "autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
+"
+let g:airline#extensions#tabline#enabled = 1
+
+"http://stackoverflow.com/questions/18932012/how-to-load-different-vimrc-file-for-different-working-directory
+set exrc
