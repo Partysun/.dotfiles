@@ -226,6 +226,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'w0rp/ale'
 Bundle 'vim-airline/vim-airline'
 Bundle 'elixir-editors/vim-elixir'
+Bundle 'evanleck/vim-svelte', {'branch': 'main'}
 Bundle 'michalbachowski/vim-wombat256mod'
 
 let g:clang_complete_auto = 0
