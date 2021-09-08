@@ -1,5 +1,5 @@
 #===============================================================================
-# git clone https://github.com/partysun/dotfiles.git ~/.dotfiles
+# git clone https://github.com/partysun/.dotfiles.git ~/.dotfiles
 # cd ~/.dotfiles
 # sh ./install.sh
 #===============================================================================
