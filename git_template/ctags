@@ -1,9 +1,0 @@
-#!/bin/sh
-
-set -e
-
-trap "rm -f .git/tags.$$" EXIT
-
-ctags --tag-relative -Rfa.git/tags.$$ --exclude=.git --exclude=export --exclude=bin --exclude=out
-
-mv .git/tags.$$ .git/tags

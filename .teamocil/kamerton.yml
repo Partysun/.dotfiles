@@ -1,7 +1,0 @@
-name: "kamerton"
-windows:
-  - name: "develop"
-    root: "~/Developer/kamerton/api"
-    panes:
-      - echo "Hack Time :)"
-      - python manage.py runserver
