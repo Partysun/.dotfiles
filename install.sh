@@ -27,6 +27,7 @@ ln -sf $dotfiles_dir/vim/vimrc ~/.vimrc
 ln -sf $dotfiles_dir/.tmux.conf ~/.tmux.conf
 ln -sf $dotfiles_dir/zsh/config.zsh ~/.zshrc
 ln -sf $dotfiles_dir/git/.gitconfig ~/.gitconfig
+ln -sf $dotfiles_dir/.config/nvim ~/.config/nvim
 
 #==============
 # Set zsh as the default shell

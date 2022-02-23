@@ -6,12 +6,13 @@ env:
   TERM: xterm-256color
 
 window:
+  title: Alacritty
   # Spread additional padding evenly around the terminal content.
   padding:
     x: 10
     y: 10
   # Remove buttons
-  decorations: none
+  decorations: full
   # Open in full screen 
   # startup_mode: SimpleFullscreen
   # Dimensions if not SimpleFullscreen
@@ -27,14 +28,30 @@ cursor:
   style: Block
 
 font:
-  #normal:
-    # Needs to be powerline font if using zsh theme with powerline
-    # family: Source Code Pro for Powerline   
-  # Font size
-  size: 17
+  normal:
+    family: "Hack Nerd Font"
+    style: Regular
+  bold:
+    family: "Hack Nerd Font"
+    style: Bold
+  italic:
+    family: "Hack Nerd Font"
+    style: Italic
+  bold_italic:
+    family: "Hack Nerd Font"
+    style: Bold Italic
 
+  # Point size
+  size: 17
   # Better font rendering for mac
   use_thin_strokes: true
+
+  offset:
+    x: 0
+    y: 0
+  glyph_offset:
+    x: 0
+    y: 0
 
 # Colors (Hyper)
 colors:
