@@ -10,8 +10,11 @@ cd dotfiles
 then use [stow](https://www.gnu.org/software/stow/) to create symlinks
 
 ```bash
-stow -v --dotfiles .
+stow -v .
 ```
+
+Want to simulate any stow action before execution ```-n```
+
 
 Remove dotfiles:
 
@@ -22,5 +25,5 @@ stow -v -D .
 Copy a new config to dotfiles folder first time:
 
 ```bash
-stow -v --adopt --dotfiles .
+stow -v --adopt .
 ```
